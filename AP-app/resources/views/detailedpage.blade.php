@@ -42,18 +42,18 @@
     <!-- Data Table -->
    <!-- Data Table -->
    <section class="overflow-x-auto">
-        <table id="table" class="w-full border-collapse border border-gray-300 text-sm md:text-base sm:text-lg">
+        <table id="table" class="w-full border-collapse border border-gray-300 text-sm sm:text-base sm:text-lg">
             <thead>
                 <tr>
-                    <th class="border border-gray-300 bg-gray-200 px-2 py-2 md:px-4 md:py-2">Date (CET)</th>
-                    <th class="border border-gray-300 bg-gray-200 px-2 py-2 md:px-4 md:py-2">ACTUAL DA PRICE (EPEX)</th>
+                    <th class="border border-gray-300 bg-gray-200 px-2 py-2 sm:px-4 sm:py-2">Date (CET)</th>
+                    <th class="border border-gray-300 bg-gray-200 px-2 py-2 sm:px-4 sm:py-2">ACTUAL DA PRICE (EPEX)</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($data as $row)
                     <tr>
-                        <td class="border border-gray-300 px-2 py-2 md:px-4 md:py-2">{{ $row['Date (CET)'] }}</td>
-                        <td class="border border-gray-300 px-2 py-2 md:px-4 md:py-2">{{ $row['ACTUAL DA PRICE (EPEX)'] }} EUR/MWh</td>
+                        <td class="border border-gray-300 px-2 py-2 sm:px-4 sm:py-2">{{ $row['Date (CET)'] }}</td>
+                        <td class="border border-gray-300 px-2 py-2 sm:px-4 sm:py-2">{{ $row['ACTUAL DA PRICE (EPEX)'] }} EUR/MWh</td>
                     </tr>
                 @empty
                     <tr>

@@ -15,7 +15,6 @@ class HomeController extends Controller
             'optimalTimes' => $data['optimalTimes'],
             'limitedTimes' => $data['limitedTimes'],
             'worstTimes' => $data['worstTimes'],
-            'error' => $data['error'],
             'dayType' => $data['dayType'],
         ]);
     }
