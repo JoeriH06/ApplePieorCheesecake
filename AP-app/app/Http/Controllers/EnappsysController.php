@@ -1,7 +1,9 @@
+<!-- My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc -->
+<!-- also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc -->
+<!-- used duck method in my code for myself so understand it better, but also for the people who are going to read this code -->
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Http;
 
 class EnappsysController extends Controller
 {
@@ -11,7 +13,9 @@ class EnappsysController extends Controller
         $startDateTime = strtotime('today midnight');
         $endDateTime = strtotime('tomorrow midnight');
 
-        $result = [];
+        // Initialize multi-handle
+        $multiHandle = curl_multi_init();
+        $curlHandles = [];
 
         // Make requests in hourly intervals
         for ($start = $startDateTime; $start < $endDateTime; $start += 3600) {
@@ -29,19 +33,42 @@ class EnappsysController extends Controller
                 'end' => date('YmdHis', $end)
             ];
 
-            try {
-                // Fetch data asynchronously
-                $response = $this->fetchAsync($url, $queryParams);
+            // Initialize curl handle
+            $curlHandle = curl_init();
+            curl_setopt($curlHandle, CURLOPT_URL, $url . '?' . http_build_query($queryParams));
+            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
 
-                // Process response data
-                $data = $this->processResponse($response);
-                $result = array_merge($result, $data);
-            } catch (\Exception $e) {
-                // Log or handle the error appropriately
-                // For now, we'll just ignore the error and continue
-                continue;
-            }
+            // Add handle to multi-handle
+            curl_multi_add_handle($multiHandle, $curlHandle);
+
+            $curlHandles[] = $curlHandle;
         }
+
+        // Execute all requests concurrently
+        $running = null;
+        do {
+            curl_multi_exec($multiHandle, $running);
+        } while ($running > 0);
+
+        // Process responses
+        $result = [];
+        foreach ($curlHandles as $curlHandle) {
+            // Get response content
+            $response = curl_multi_getcontent($curlHandle);
+
+            // Process response data
+            $data = $this->processResponse($response);
+            $result = array_merge($result, $data);
+
+            // Remove handle from multi-handle
+            curl_multi_remove_handle($multiHandle, $curlHandle);
+
+            // Close the curl handle
+            curl_close($curlHandle);
+        }
+
+        // Close multi-handle
+        curl_multi_close($multiHandle);
 
         // Determine if it's an Apple Pie Day or Cheesecake Day
         $isApplePieDay = false;
@@ -82,18 +109,12 @@ class EnappsysController extends Controller
         ]);
     }
 
-    private function fetchAsync($url, $queryParams)
-    {
-        // Construct the full URL with query parameters
-        $fullUrl = $url . '?' . http_build_query($queryParams);
-
-        // Fetch data asynchronously using GuzzleHttp
-        $response = Http::get($fullUrl)->throw();
-
-        // Return response body
-        return $response->body();
-    }
-
+    /**
+     * Process the response data.
+     *
+     * @param string $response
+     * @return array
+     */
     private function processResponse($response)
     {
         $result = [];
