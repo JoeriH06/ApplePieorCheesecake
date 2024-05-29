@@ -1,9 +1,9 @@
-<!-- My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc -->
-<!-- also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc -->
-<!-- used duck method in my code for myself so understand it better, but also for the people who are going to read this code -->
 <?php
 
 namespace App\Http\Controllers;
+// My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc
+// also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc
+// used duck method in my code for myself so understand it better, but also for the people who are going to read this code
 
 class EnappsysController extends Controller
 {
