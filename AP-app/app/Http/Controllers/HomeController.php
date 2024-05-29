@@ -10,6 +10,7 @@ class HomeController extends Controller
         // Fetch data from EnappsysController
         $dataService = new EnappsysController();
         $data = $dataService->getEnappsysData();
+        \Log::info("Fetched data: ", ['data' => $data]);
 
         return view('home', [
             'optimalTimes' => $data['optimalTimes'],

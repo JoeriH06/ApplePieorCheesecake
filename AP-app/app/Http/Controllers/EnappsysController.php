@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-// My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc
-// also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc
-// used duck method in my code for myself so understand it better, but also for the people who are going to read this code
+// <!-- My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc -->
+// <!-- also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc -->
+// <!-- used duck method in my code for myself so understand it better, but also for the people who are going to read this code -->
 
 class EnappsysController extends Controller
 {
@@ -78,17 +78,13 @@ class EnappsysController extends Controller
                 break;
             }
         }
-
         $dayType = $isApplePieDay ? 'Apple Pie' : 'Cheesecake';
-
         $optimalTimes = [];
         $limitedTimes = [];
         $worstTimes = [];
-
         foreach ($result as $row) {
             $price = preg_replace('/[^0-9.]/', '', $row['ACTUAL DA PRICE (EPEX)']);
             $date = $row['Date (CET)'];
-
             if ($price < 10) {
                 if (count($optimalTimes) < 2) {
                     $optimalTimes[] = $date;
@@ -99,7 +95,6 @@ class EnappsysController extends Controller
                 $worstTimes[] = $date;
             }
         }
-
         return view('detailedpage', [
             'data' => $result,
             'dayType' => $dayType,
@@ -120,7 +115,6 @@ class EnappsysController extends Controller
         $result = [];
         $lines = explode("\n", trim($response));
         $headers = ['Date (CET)', 'ACTUAL DA PRICE (EPEX)'];
-
         foreach ($lines as $index => $line) {
             if (!empty($line) && $index > 0) {
                 $columns = str_getcsv($line);
@@ -130,7 +124,6 @@ class EnappsysController extends Controller
                 }
             }
         }
-
         return $result;
     }
 }
