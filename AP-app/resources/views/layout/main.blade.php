@@ -11,7 +11,7 @@
     <script type="module" src="{{ asset('website.js') }}"></script>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 flex flex-col h-screen">
     <header class="p-4 bg-white shadow-md flex justify-between items-center bg-indigo-300">
         <img src="{{ asset('/images/appleicons.png') }}" alt="Icon" class="h-10 w-10">
         <section class="text-sm font-bold">Apple pie or Cheesecake</section>
@@ -20,7 +20,7 @@
     </header>
 
     <!-- Sidebar -->
-    <section>
+    <section class=" flex">
         <script>
             function toggleSidebar() {
                 const sidebar = document.getElementById('mySidebar');
@@ -34,22 +34,26 @@
             }
         </script>
 
-        <section class="sidebar bg-gray-100 fixed inset-y-0 right-0 w-64 transition-transform ease-in-out z-50 hidden"
+        <aside class="sidebar bg-gray-100 fixed inset-y-0 right-0 w-64 transition-transform ease-in-out z-50 hidden"
             id="mySidebar">
-            <section class="flex justify-between items-center px-4 py-2">
-                <h3 class="text-lg sm:text-xl font-semibold">Menu</h3>
-                <button class="text-2xl" onclick="menu_close()">&#10005;</button>
+            <section class="flex flex-col h-full justify-between">
+                <section>
+                    <section class="flex justify-between items-center px-4 py-2">
+                        <h3 class="text-lg sm:text-xl font-semibold">Menu</h3>
+                        <button class="text-2xl" onclick="menu_close()">&#10005;</button>
+                    </section>
+                    <!-- Sidebar content -->
+                    <section class="px-4 py-2 flex flex-col space-y-2">
+                        <a href="/" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                            <section class="py-1.5">Home</section>
+                        </a>
+                        <a href="/detailedpage" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                            <section class="py-1.5">Detailed Page</section>
+                        </a>
+                    </section>
+                </section>
             </section>
-            <!-- Sidebar content -->
-            <section class="px-4 py-2">
-                <a href="/" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
-                    <section class="py-1.5">Home</section>
-                </a>
-                <a href="/detailedpage" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
-                    <section class="py-1.5">Detailed Page</section>
-                </a>
-            </section>
-        </section>
+        </aside>
     </section>
 
     <!-- Main Content -->

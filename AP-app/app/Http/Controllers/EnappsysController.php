@@ -31,7 +31,7 @@ class EnappsysController extends Controller
 
             try {
                 // Fetch data asynchronously
-                $response = Http::get($url, $queryParams)->throw();
+                $response = $this->fetchAsync($url, $queryParams);
 
                 // Process response data
                 $data = $this->processResponse($response);
@@ -87,12 +87,11 @@ class EnappsysController extends Controller
         // Construct the full URL with query parameters
         $fullUrl = $url . '?' . http_build_query($queryParams);
 
-        // Fetch data asynchronously using file_get_contents
-        // (This is a PHP limitation, as it does not support asynchronous fetch by default)
-        $data = file_get_contents($fullUrl);
+        // Fetch data asynchronously using GuzzleHttp
+        $response = Http::get($fullUrl)->throw();
 
-        // Convert JSON data to PHP array
-        return json_decode($data, true);
+        // Return response body
+        return $response->body();
     }
 
     private function processResponse($response)

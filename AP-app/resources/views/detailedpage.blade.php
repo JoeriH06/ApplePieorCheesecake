@@ -3,7 +3,7 @@
 @section('title', 'Detailed Page')
 
 @section('content')
-    <h1 class="text-center mt-6 mb-6 text-lg sm: text-xl sm:text-2xl">EnAppSys Data</h1>
+    <h1 class="text-center mt-6 mb-6 text-lg sm:text-xl">EnAppSys Data</h1>
 
     <!-- Color Explanation Table -->
     <section class="overflow-x-auto">
@@ -40,7 +40,6 @@
     </section>
 
     <!-- Data Table -->
-   <!-- Data Table -->
    <section class="overflow-x-auto">
         <table id="table" class="w-full border-collapse border border-gray-300 text-sm sm:text-base sm:text-lg">
             <thead>
