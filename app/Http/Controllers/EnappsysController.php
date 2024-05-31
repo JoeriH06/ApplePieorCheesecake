@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 // <!-- My knowledge about multi and curl handlers: https://www-php-net.translate.goog/manual/en/function.curl-multi-add-handle.php?_x_tr_sl=en&_x_tr_tl=nl&_x_tr_hl=nl&_x_tr_pto=sc -->
 // <!-- also found this youtube video: https://www.youtube.com/watch?v=ZIsdbVOQJNc -->
+// - interacting with an external API usingGET, POST, PUT, PATCH, DELETE requests
+// - sending post data with the request
+// - setting HTTP headers
+// - decoding and encoding JSON data
+// - writing the response to a file
+
 // <!-- used duck method in my code for myself so understand it better, but also for the people who are going to read this code -->
 
 class EnappsysController extends Controller
@@ -36,7 +42,7 @@ class EnappsysController extends Controller
             // Initialize curl handle
             $curlHandle = curl_init();
             curl_setopt($curlHandle, CURLOPT_URL, $url . '?' . http_build_query($queryParams));
-            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true); // settings a response instead of outputting it
 
             // Add handle to multi-handle
             curl_multi_add_handle($multiHandle, $curlHandle);
