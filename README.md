@@ -16,7 +16,7 @@
 - **Feature Tests:** Test the system's behavior with real HTTP requests and responses.
 
 ## Completed Tests
-![Completed Tests](path/to/screenshot.png)
+![Completed Tests](forecastbaking\public\images\test.png)
 
 ## Evaluation
 1. **Detected Errors:** API failure, incorrect data structure.
