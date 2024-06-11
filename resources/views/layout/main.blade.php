@@ -50,7 +50,10 @@
                         <a href="/detailedpage" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
                             <section class="py-1.5">Detailed Page</section>
                         </a>
-                    </section>
+                        <a href="{{ route('recipes.index') }}"
+                            class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                            <section class="py-1.5">Recipes</section>
+                        </a>
                 </section>
             </section>
         </aside>
