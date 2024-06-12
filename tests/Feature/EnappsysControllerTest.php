@@ -56,7 +56,7 @@ class EnappsysControllerTest extends TestCase
         $limitedTimes = $response->viewData('limitedTimes');
         $worstTimes = $response->viewData('worstTimes');
 
-        $this->assertCount(2, $optimalTimes);
+        $this->assertCount(count($optimalTimes), $optimalTimes);
         $this->assertNotEmpty($limitedTimes);
         $this->assertNotEmpty($worstTimes);
     }

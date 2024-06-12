@@ -2,6 +2,9 @@
 
 # Test Plan
 
+## PDF file with whole plan ->
+ ![here](public\pdfplan\testdock.pdf)
+
 ## User Stories
 1. **Viewing Enappsys Data**
    - Happy Path: The data is successfully retrieved and displayed.
@@ -14,9 +17,6 @@
 ## Tests
 - **Unit Tests:** Test individual functions and logic.
 - **Feature Tests:** Test the system's behavior with real HTTP requests and responses.
-
-## Completed Tests
-![Completed Tests](forecastbaking\public\images\test.png)
 
 ## Evaluation
 1. **Detected Errors:** API failure, incorrect data structure.
