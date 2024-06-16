@@ -21,7 +21,7 @@ WORKDIR /var/www/html
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
 # Install Composer dependencies
-RUN composer install
+RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions for Laravel and SQLite
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database && \
