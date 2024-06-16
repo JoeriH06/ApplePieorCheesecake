@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /mnt/c/hz/API/forecastbaking:/var/www/html
+      - .:/var/www/html
     depends_on:
       - db
     environment:
