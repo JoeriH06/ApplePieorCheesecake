@@ -11,7 +11,7 @@
 
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($recipes as $recipe)
-            <article class="p-4 bg-mint-cream shadow-md rounded">
+            <article class="p-4 bg-celadon shadow-md rounded">
                 <h2 class="text-xl font-semibold mb-2 text-feldgrau">{{ $recipe->name }}</h2>
                 <p class="text-battleship-gray">{{ $recipe->description }}</p>
                 <a href="{{ route('recipes.show', $recipe->id) }}" class="text-ash-gray hover:underline">Read More</a>

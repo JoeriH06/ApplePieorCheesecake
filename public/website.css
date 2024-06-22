@@ -9,6 +9,44 @@
     --ash-gray: #ECB176;
     --mint-cream: #FED8B1;
     --celadon: #FFF2E5;
+    --light-terracotta: #E08150;
+    --terracotta: #D1603D;
+    --dark-terracotta: #A54230;
+    --light-burnt-sienna: #E97451;
+    --burnt-sienna: #B34732;
+    --light-green: #C5D8A4;
+    --medium-green: #A8C080;
+}
+.bg-light-sage {
+    background-color: var(--light-green);
+}
+
+.bg-medium-sage {
+    background-color: var(--medium-green);
+}
+
+.bg-light-terracotta {
+    background-color: var(--light-terracotta);
+}
+
+.bg-terracotta {
+    background-color: var(--terracotta);
+}
+
+.bg-dark-terracotta {
+    background-color: var(--dark-terracotta);
+}
+
+.bg-light-burnt-sienna {
+    background-color: var(--light-burnt-sienna);
+}
+
+.bg-burnt-sienna {
+    background-color: var(--burnt-sienna);
+}
+
+.bg-terra-cotta {
+    background-color: var(--terracotta);
 }
 
 .bg-feldgrau {
