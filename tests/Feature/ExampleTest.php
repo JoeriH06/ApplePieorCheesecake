@@ -17,14 +17,19 @@ class ExampleTest extends TestCase
      */
     public function testUserRegistration()
     {
+        // Arrange
         $user = User::factory()->make();
+
+        // Act
         $response = $this->post('/register', [
             'name' => $user->name,
             'email' => $user->email,
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
-        $response->assertStatus(302);
+
+        // Assert
+        $response->assertStatus(302); // Redirection status
         $this->assertDatabaseHas('users', ['email' => $user->email]);
     }
 
@@ -35,12 +40,15 @@ class ExampleTest extends TestCase
      */
     public function testUnhappyPathRegistration()
     {
+        // Act
         $response = $this->post('/register', [
             'name' => '',
             'email' => 'invalid-email',
             'password' => 'short',
             'password_confirmation' => 'short',
         ]);
+
+        // Assert
         $response->assertSessionHasErrors(['name', 'email', 'password']);
     }
 
@@ -51,13 +59,18 @@ class ExampleTest extends TestCase
      */
     public function testLogin()
     {
+        // Arrange
         $user = User::factory()->create([
             'password' => bcrypt($password = 'password'),
         ]);
+
+        // Act
         $response = $this->post('/login', [
             'email' => $user->email,
             'password' => $password,
         ]);
+
+        // Assert
         $response->assertStatus(302);
         $this->assertAuthenticatedAs($user);
     }
@@ -69,13 +82,18 @@ class ExampleTest extends TestCase
      */
     public function testLoginWithInvalidCredentials()
     {
+        // Arrange
         $user = User::factory()->create([
             'password' => bcrypt('password'),
         ]);
+
+        // Act
         $response = $this->post('/login', [
             'email' => $user->email,
             'password' => 'wrongpassword',
         ]);
+
+        // Assert
         $response->assertStatus(302);
         $this->assertGuest();
         $response->assertSessionHasErrors();
