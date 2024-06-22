@@ -7,7 +7,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Fetch data from EnappsysController
+        // This page is accessible to everyone
+        // Fetch data from EnappsysController or other sources
         $dataService = new EnappsysController();
         $data = $dataService->getEnappsysData();
         \Log::info("Fetched data: ", ['data' => $data]);

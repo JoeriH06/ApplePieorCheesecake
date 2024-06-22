@@ -7,6 +7,20 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');  // Accessible only to authenticated users
+    }
+
+    public function profile()
+    {
+        return view('profile');  // Accessible only to authenticated users
+    }
     public function index()
     {
         $recipes = Recipe::all();

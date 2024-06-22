@@ -11,8 +11,24 @@ namespace App\Http\Controllers;
 
 // <!-- used duck method in my code for myself so understand it better, but also for the people who are going to read this code -->
 
+
 class EnappsysController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');  // Accessible only to authenticated users
+    }
+
+    public function profile()
+    {
+        return view('profile');  // Accessible only to authenticated users
+    }
     public function getEnappsysData()
     {
         $url = 'https://appqa.enappsys.com/datadownload';
