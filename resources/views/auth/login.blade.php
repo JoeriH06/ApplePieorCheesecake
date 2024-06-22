@@ -1,11 +1,10 @@
 @extends('layout.main')
 
 @section('content')
-<div class="relative min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/background.jpg') }}'); filter: blur(8px); z-index: -1;"></div>
+<div class="relative min-h-screen flex items-center justify-center bg-mint-cream py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8 bg-white shadow-lg rounded-lg p-10 relative z-10">
         <div class="text-center">
-            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">{{ __('Login') }}</h2>
+            <h2 class="mt-6 text-3xl font-extrabold text-feldgrau">{{ __('Login') }}</h2>
             <p class="mt-2 text-sm text-gray-600">Curious? Want to see details? Login now!</p>
         </div>
 

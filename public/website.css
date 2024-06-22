@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Color Variables */
+:root {
+    --feldgrau: #6F4E37;
+    --battleship-gray: #A67B5B;
+    --ash-gray: #ECB176;
+    --mint-cream: #FED8B1;
+    --celadon: #FFF2E5;
+}
+
+.bg-feldgrau {
+    background-color: var(--feldgrau);
+}
+
+.text-feldgrau {
+    color: var(--feldgrau);
+}
+
+.bg-battleship-gray {
+    background-color: var(--battleship-gray);
+}
+
+.text-battleship-gray {
+    color: var(--battleship-gray);
+}
+
+.bg-ash-gray {
+    background-color: var(--ash-gray);
+}
+
+.text-ash-gray {
+    color: var(--ash-gray);
+}
+
+.bg-mint-cream {
+    background-color: var(--mint-cream);
+}
+
+.text-mint-cream {
+    color: var(--mint-cream);
+}
+
+.bg-celadon {
+    background-color: var(--celadon);
+}
+
+.text-celadon {
+    color: var(--celadon);
+}
