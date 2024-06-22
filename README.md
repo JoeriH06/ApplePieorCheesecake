@@ -3,26 +3,22 @@
 # Test Plan
 
 ## PDF file with whole plan
-![here](public/pdfplan/testdock.pdf)
+![here](public/pdfplan/Testingdoc.pdf)
 
 ## User Stories
-1. **Data Classification**
-   - Happy Path: The data is classified correctly based on the given price ranges.
-   - Unhappy Path: The data classification fails due to incorrect data format.
-
-2. **User Registration**
+1. **User Registration**
    - Happy Path: A user successfully registers with valid data.
    - Unhappy Path: Registration fails with invalid data.
 
-3. **User Login**
+2. **User Login**
    - Happy Path: A user successfully logs in with valid credentials.
    - Unhappy Path: Login fails with invalid credentials.
 
-4. **Recipe Index View**
+3. **Recipe Index View**
    - Happy Path: Authenticated user views the list of recipes.
    - Unhappy Path: Unauthenticated user is redirected to the login page.
 
-5. **Recipe Show View**
+4. **Recipe Show View**
    - Happy Path: Authenticated user views a specific recipe.
    - Unhappy Path: Unauthenticated user is redirected to the login page or the recipe does not exist.
 
@@ -43,11 +39,6 @@
 - **User Login**:
   - Test that a user can log in with valid credentials.
   - Test that login fails with invalid credentials.
-
-## Evaluation
-1. **Detected Errors**: API failure, incorrect data structure.
-2. **Undetected Errors**: Data accuracy, external data manipulation.
-3. **Conclusion**: High confidence in system correctness under normal and error conditions, assuming accurate external data.
 
 ## Link to Heroku website
 - **Link**: [http://ap-app-93ed80a634e1.herokuapp.com/](http://ap-app-93ed80a634e1.herokuapp.com/)
