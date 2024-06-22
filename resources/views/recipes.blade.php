@@ -5,11 +5,11 @@
 @section('content')
     <h1 class="text-2xl font-bold mb-4 text-feldgrau">Recipes</h1>
 
-    <section class="mb-6 ">
+    <section class="mb-6">
         <a href="{{ route('recipes.create') }}" class="bg-celadon text-feldgrau py-2 px-4 rounded">Create New Recipe</a>
     </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($recipes as $recipe)
         <article class="p-4 bg-mint-cream shadow-md rounded">
             <h2 class="text-xl font-semibold mb-2 text-feldgrau">{{ $recipe->name }}</h2>

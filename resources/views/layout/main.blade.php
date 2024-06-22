@@ -34,7 +34,7 @@
             }
         </script>
 
-        <aside class="sidebar bg-gray-100 fixed inset-y-0 right-0 w-64 transition-transform ease-in-out z-50 hidden" id="mySidebar">
+        <aside class="sidebar bg-ash-gray fixed inset-y-0 right-0 w-64 transition-transform ease-in-out z-50 hidden" id="mySidebar">
             <section class="flex flex-col h-full justify-between">
                 <section>
                     <section class="flex justify-between items-center px-4 py-2">
@@ -43,31 +43,31 @@
                     </section>
                     <!-- Sidebar content -->
                     <section class="px-4 py-2 flex flex-col space-y-2">
-                        <a href="/" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
-                            <section class="py-1.5">Home</section>
+                        <a href="/" class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
+                            Home
                         </a>
-                        <a href="/detailedpage" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
-                            <section class="py-1.5">Detailed Page</section>
+                        <a href="/detailedpage" class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
+                            Detailed Page
                         </a>
-                        <a href="{{ route('recipes.index') }}" class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
-                            <section class="py-1.5">Recipes</section>
+                        <a href="{{ route('recipes.index') }}" class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
+                            Recipes
                         </a>
                         <ul class="navbar-nav ms-auto">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
-                                    <li class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                                    <li class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                 @endif
 
                                 @if (Route::has('register'))
-                                    <li class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                                    <li class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
-                                <li class="block text-sm text-gray-700 hover:bg-gray-200 mb-2">
+                                <li class="block text-sm text-feldgrau hover:bg-celadon mb-2 rounded py-1.5">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
