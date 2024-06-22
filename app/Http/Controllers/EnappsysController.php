@@ -14,26 +14,19 @@ namespace App\Http\Controllers;
 
 class EnappsysController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    public function dashboard()
-    {
-        return view('dashboard');  // Accessible only to authenticated users
-    }
-
-    public function profile()
-    {
-        return view('profile');  // Accessible only to authenticated users
-    }
-    public function getEnappsysData()
+    public function getEnappsysData($date = null)
     {
         $url = 'https://appqa.enappsys.com/datadownload';
-        $startDateTime = strtotime('today midnight');
-        $endDateTime = strtotime('tomorrow midnight');
+
+        // Set the date for the request
+        $date = $date ? strtotime($date) : strtotime('today');
+        $startDateTime = strtotime('midnight', $date);
+        $endDateTime = strtotime('tomorrow midnight', $date) - 1;
 
         // Initialize multi-handle
         $multiHandle = curl_multi_init();
@@ -102,27 +95,24 @@ class EnappsysController extends Controller
         }
         $dayType = $isApplePieDay ? 'Apple Pie' : 'Cheesecake';
         $optimalTimes = [];
-        $limitedTimes = [];
         $worstTimes = [];
         foreach ($result as $row) {
             $price = preg_replace('/[^0-9.]/', '', $row['ACTUAL DA PRICE (EPEX)']);
             $date = $row['Date (CET)'];
             if ($price < 10) {
-                if (count($optimalTimes) < 2) {
-                    $optimalTimes[] = $date;
-                }
-            } elseif ($price >= 10 && $price <= 50) {
-                $limitedTimes[] = $date;
+                $optimalTimes[] = $date;
             } elseif ($price > 50) {
                 $worstTimes[] = $date;
             }
         }
+
         return view('detailedpage', [
             'data' => $result,
             'dayType' => $dayType,
             'optimalTimes' => $optimalTimes,
-            'limitedTimes' => $limitedTimes,
             'worstTimes' => $worstTimes,
+            'date' => date('Y-m-d', $startDateTime),
+            'applePieIndex' => count($optimalTimes),
         ]);
     }
 
@@ -149,3 +139,4 @@ class EnappsysController extends Controller
         return $result;
     }
 }
+
